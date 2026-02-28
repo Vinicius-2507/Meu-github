@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Page-theme</title>
+    <title>Personal Theme Picker</title>
 </head>
 <body>
-    <h1 id="titulo_usuario">Bem-Vindo!</h1>
-    
-    <button id="botao-tema">Modo Escuro</button>
-    <input id="user" type="text" placeholder="Digite seu nome:" autofocus>
-    <button id="botao-salvar-usuario" type="submit">Salvar</button>
+    <main class="container">
+        <header>
+            <h1 id="titulo_usuario">Bem-Vindo!</h1>
+            <button id="botao-tema" aria-label="Alternar tema">
+                <span class="icon">🌙</span>
+                <span class="text">Modo Escuro</span>
+            </button>
+        </header>
+
+        <form id="form-usuario">
+            <div class="input-group">
+                <input id="user" type="text" placeholder="Como quer ser chamado?" autofocus required maxlength="20">
+                <button type="submit" id="botao-salvar-usuario">Atualizar Nome</button>
+            </div>
+        </form>
+    </main>
 
     <script src="script.js"></script>
 </body>
