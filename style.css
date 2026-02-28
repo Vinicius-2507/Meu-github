@@ -1,156 +1,111 @@
 :root {
-    /*cores do body*/
-
-    /*modo claro*/
-    --fundo-claro: #f0f2f5;
-    /*modo escuro*/
-    --fundo-escuro: #18191a;
-
-    /*cores da botão tema*/
-
-    /*modo claro*/
-    --texto-modo-claro: #050505;
-    --borda-modo-claro: #007bff;
-    --fundo-botao-claro: #ffffff;
-    --efeito-do-botao-tema-modo-claro: 0 0 15px #050505;
-    /*modo escuro*/
-    --texto-modo-escuro: #e4e6eb;
-    --borda-modo-escuro: #2d88ff;
-    --fundo-botao-escuro: #242526 ;
-    --efeito-do-botao-tema-modo-escuro: 0 0 15px #e4e6eb;
-
-    /*cores da caixa do usuário*/
-
-    /*modo claro*/
-    --fundo-da-caixa-modo-claro: #ffffff;
-    --borda-caixa-modo-claro: #007bff;
-    --placeholder-da-caixa-modo-claro: #050505;
-    --texto-da-caixa-modo-claro: #050505;
-    --efeito-da-caixa-modo-claro: 0 0 15px #050505;
-    /*modo escuro*/
-    --borda-caixa-modo-escuro: #2d88ff;
-    --fundo-da-caixa-modo-escuro: #242526;
-    --texto-da-caixa-modo-escuro: #e4e6eb;
-    --placeholder-da-caixa-modo-escuro: #e4e6eb;
-    --efeito-da-caixa-modo-escuro: 0 0 15px #e4e6eb;
-
-    /*cores do botão "salvar usuário*/
-
-    /*modo claro*/
-    --borda-do-botao-salvar-usuario-modo-claro: #007bff;
-    --fundo-do-botao-salvar-usuario-modo-claro: #ffffff;
-    --texto-do-botão-salvar-modo-claro: #050505;
-    --efeito-do-botao-salvar-modo-claro: 0 0 15px #050505;
-    /*modo escuro*/
-    --borda-do-botao-salvar-usuario-modo-escuro: #2d88ff;
-    --fundo-do-botao-salvar-usuario-modo-escuro: #242526;
-    --texto-do-botão-salvar-modo-escuro: #e4e6eb;
-    --efeito-do-botao-salvar-modo-escuro: 0 0 15px #e4e6eb;
-
-    /*cores do titulo*/
-
-    /*modo claro*/
-    --texto-titulo-modo-claro: #242526;
-    --efeito-titulo-modo-claro: 0 0 15px #050505;
-    /*modo escuro*/
-    --texto-titulo-modo-escuro: #e4e6eb;
-    --efeito-titulo-modo-escuro: 0 0 15px #e4e6eb;
-    
-    /*cor do mouse*/
-    --cor-do-cursor-modo-escuro: #e4e6eb;
-
+    --fundo-body: #f0f2f5;
+    --fundo-card: #ffffff;
+    --texto: #1c1e21;
+    --borda: #007bff;
+    --borda-hover: #0056b3;
+    --efeito: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transicao: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#titulo_usuario {
-    font-size: 4rem;
-    margin-bottom: 70px;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    color: var(--texto-titulo-modo-claro);
-    transition: background-color 1.5s ease;
-    text-shadow: var(--efeito-titulo-modo-claro);
-    letter-spacing: 5px;
+
+body.escuro {
+    --fundo-body: #18191a;
+    --fundo-card: #242526;
+    --texto: #e4e6eb;
+    --borda: #2d88ff;
+    --borda-hover: #4599ff;
+    --efeito: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-body.escuro #titulo_usuario {
-    color: var(--texto-titulo-modo-escuro);
-    text-shadow: var(--efeito-titulo-modo-escuro);
-}
+
 body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--fundo-body);
+    color: var(--texto);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transition: background-color 0.8s ease;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#titulo_usuario {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    transition: var(--transicao);
+    text-transform: capitalize;
+}
+
+#botao-tema {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fundo-card);
+    border: 2px solid var(--borda);
+    color: var(--texto);
+    padding: 10px 20px;
+    border-radius: 50px; /* Estilo pílula */
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transicao);
+    box-shadow: var(--efeito);
+    margin-bottom: 3rem;
+}
+
+#botao-tema:hover {
+    transform: translateY(-3px);
+    border-color: var(--borda-hover);
+}
+
+#form-usuario .input-group {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    background-color: var(--fundo-claro);
-    transition: background-color 1.5s ease;
+    gap: 1rem;
 }
-#botao-tema {
-    border-radius: 8px;
-    backface-visibility: hidden;
-    will-change: transform;
-    transition: all 1.5s ease;
-    border-color: var(--borda-modo-claro);
-    background-color: var(--fundo-botao-claro);
-    color: var(--texto-modo-claro);
-    box-shadow: var(--efeito-do-botao-tema-modo-claro);
-}
-#botao-tema:hover {
-    transform: scale(1.1);
-    font-weight: bold;
-}
-body.escuro {
-    background-color: var(--fundo-escuro);
-}
-body.escuro #botao-tema {
-    background-color: var(--fundo-botao-escuro);
-    color: var(--texto-modo-escuro);
-    border-color: var(--borda-modo-escuro);
-    box-shadow: var(--efeito-do-botao-tema-modo-escuro);
-}
+
 #user {
-    width: auto;
-    padding: 15px;
-    margin-top: 150px;
-    border-radius: 8px;
-    border-color: var(--borda-caixa-modo-claro);
-    background-color: var(--fundo-da-caixa-modo-claro);
-    transition: background-color 1.5s ease;
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    background: var(--fundo-card);
+    color: var(--texto);
+    font-size: 1rem;
+    transition: var(--transicao);
+    width: 300px;
+}
+
+#user:focus {
+    border-color: var(--borda);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
     outline: none;
-    box-shadow: var(--efeito-da-caixa-modo-claro);
 }
-body.escuro #user {
-    border-color: var(--borda-caixa-modo-escuro);
-    background-color: var(--fundo-da-caixa-modo-escuro);
-    box-shadow: var(--efeito-da-caixa-modo-escuro);
-    caret-color: var(--cor-do-cursor-modo-escuro);
-    color: var(--texto-da-caixa-modo-escuro)
-}
-::placeholder {
-    transition: background-color 1.5s ease;
-    font-size: 15px;
-    text-align: center;
-    color: var(--placeholder-da-caixa-modo-claro)
-}
-body.escuro ::placeholder {
-    color: var(--placeholder-da-caixa-modo-escuro);
-}
+
 #botao-salvar-usuario {
-    border-radius: 8px;
-    margin-top: 30px;
-    backface-visibility: hidden;
-    will-change: transform;
-    transition: all 1.5s ease;
-    border-color: var(--borda-do-botao-salvar-usuario-modo-claro);
-    background-color: var(--fundo-do-botao-salvar-usuario-modo-claro);
-    color: var(--texto-do-botão-salvar-modo-claro);
-    box-shadow: var(--efeito-do-botao-salvar-modo-claro);
-}
-body.escuro #botao-salvar-usuario {
-    border-color: var(--borda-do-botao-salvar-usuario-modo-escuro);
-    background-color: var(--fundo-do-botao-salvar-usuario-modo-escuro);
-    color: var(--texto-do-botão-salvar-modo-escuro);
-    box-shadow: var(--efeito-do-botao-salvar-modo-escuro);
-}
-#botao-salvar-usuario:hover {
-    transform: scale(1.1);
+    padding: 15px;
+    border-radius: 12px;
+    background: var(--borda);
+    color: white;
+    border: none;
     font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+#botao-salvar-usuario:hover {
+    filter: brightness(1.1);
+    letter-spacing: 1px;
 }
